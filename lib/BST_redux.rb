@@ -24,23 +24,23 @@ class BinarySearchTree
     end
   end
 
-  # def move_left
-  #   if @root_node.left.nil?
-  #     @root_node.left = @current_node
-  #     @current_node.depth
-  #   else
-  #     @root_node.left.insert(score, movie_title)
-  #   end
-  # end
-  #
-  # def move_right
-  #   if @root_node.right.nil?
-  #     @root_node.right = @current_node
-  #     @current_node.depth
-  #   else
-  #     @root_node.right.insert(score, movie_title)
-  #   end
-  # end
+  def move_left
+    if @root_node.left.nil?
+      @root_node.left = @current_node
+      @current_node.depth
+    else
+      @root_node.left.insert(score, movie_title)
+    end
+  end
+
+  def move_right
+    if @root_node.right.nil?
+      @root_node.right = @current_node
+      @current_node.depth
+    else
+      @root_node.right.insert(score, movie_title)
+    end
+  end
 end
 
 # tree = BinarySearchTree.new
