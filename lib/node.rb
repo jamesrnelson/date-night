@@ -1,15 +1,14 @@
 require 'pry'
 
 class Node
-  attr_reader :value, :movie_title
-  attr_accessor :left, :right, :depth
+  attr_reader :score, :movie_title
+  attr_accessor :left, :right
 
-  def initialize(value, movie_title, depth=0)
-    @value = value
+  def initialize(score, movie_title)
+    @score = score
     @movie_title = movie_title
     @left = nil
     @right = nil
-    @depth = depth
   end
 
   # def move_left

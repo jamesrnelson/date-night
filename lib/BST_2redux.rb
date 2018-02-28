@@ -2,54 +2,55 @@ require './lib/node.rb'
 require 'pry'
 
 class BinarySearchTree
-  attr_accessor :root_node,
+  attr_accessor :root_node
 
   def initialize()
     @root_node = nil
   end
 
-  def insert(score, movie_title, depth=0)
-    if root_node.nil?
-      root_node = Node.new(score, movie_title)
-      root_node.depth
+  def insert(score, movie_title)
+    # binding.pry
+    node_to_insert = Node.new(score, movie_title)
+    if @root_node.nil?
+      @root_node = node_to_insert
+      0
     else
-      compare(current_node, root_node)
+      compare(node_to_insert, root_node, 0)
     end
   end
 
-  def compare(current_node, root_node, depth)
+  def compare(node_to_insert, current_node, depth)
+    # binding.pry
     depth += 1
-    if current_node.score <= root_node.score
-      current_node = root_node
-      move_left
-    elsif current_node.score > root_node.score
-      current_node = root_node
-      move_right
+    if node_to_insert.score <= current_node.score
+      move_left(node_to_insert, current_node, depth)
+    else
+      move_right(node_to_insert, current_node, depth)
     end
   end
 
+  def move_left(node_to_insert, current_node, depth)
+    # binding.pry
+    if current_node.left.nil?
+      current_node.left = node_to_insert
+      depth
 
-
-  def move_left
-    if root_node.left.nil?
-      current_node = Node.new(score, movie_title, depth)
-      root_node.left = current_node
-      current_node.depth
     else
-      compare(current_node, root_node)
+      compare(node_to_insert, current_node.left, depth)
     end
   end
 
-  def move_right
-    if root_node.right.nil?
-      root_node.right = current_node
+  def move_right(node_to_insert, current_node, depth)
+    if current_node.right.nil?
+      current_node.right = node_to_insert
+      depth
     else
-      compare(current_node, root_node)
+      compare(node_to_insert, current_node.right, depth)
     end
   end
 end
-
-
-tree = BinarySearchTree.new
-binding.pry
-tree.insert(70, "Shawshank Redemption")
+#
+#
+# tree = BinarySearchTree.new
+# binding.pry
+# tree.insert(70, "Shawshank Redemption")

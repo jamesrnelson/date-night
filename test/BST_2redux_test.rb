@@ -16,4 +16,5 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal 1, tree.insert(92, "Sharknado 3")
     assert_equal 2, tree.insert(50, "Hannibal Buress: Animal Furnace")
   end
+
 end
